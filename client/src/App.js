@@ -1,11 +1,11 @@
 import Nav from './components/Nav'
 import About from './pages/About'
 import MainFeed from './pages/MainFeed'
-import Login from './pages/Login'
+import Login from './pages/login/Login'
 import Register from './pages/Register'
 import ProfilePage from './pages/ProfilePage'
 import { Route, Routes } from 'react-router-dom'
-
+import './app.css'
 function App() {
   return (
     <div>
