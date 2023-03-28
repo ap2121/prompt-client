@@ -2,6 +2,8 @@ import React from 'react'
 import {TextField, Card, Typography} from '@mui/material'
 import './login.css'
 const Login = () => {
+  
+  
   return (
     <div>
       <section className='login-card-cnt'> 
@@ -11,6 +13,7 @@ const Login = () => {
         <section className='input-cnt'>
         <TextField label="email" variant='outlined' className='login-inpt'/>
         <TextField label='password' variant='outlined' className='login-inpt'/>
+        <Typography variant='p' style={{fontSize: '15px'}}>Come with me if you want to make a new account..</Typography>
         </section>
       </Card>
       </section>
