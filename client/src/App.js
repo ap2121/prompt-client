@@ -4,6 +4,7 @@ import MainFeed from './pages/MainFeed'
 import Login from './pages/login/Login'
 import Register from './pages/register/Register'
 import ProfilePage from './pages/ProfilePage'
+import Home from './pages/Home'
 import { Route, Routes, useNavigate } from 'react-router-dom'
 import './app.css'
 import { CheckSession } from './services/Auth'
@@ -38,8 +39,9 @@ function App() {
       </div>
       <div>
     <Routes>
+      <Route path='/' element={<Home/>}/>
       <Route path='/feed/:id' element={<MainFeed/>} user={user}/>
-      <Route path='/pub-feed' element={<MainFeed/>}/>
+      <Route path='/feed' element={<MainFeed/>}/>
       <Route path='/login' element={<Login setUser={setUser}/>}/>
       <Route path='register' element={<Register/>}/>
       <Route path='/about' element={<About/>}/>

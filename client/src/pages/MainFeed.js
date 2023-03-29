@@ -3,22 +3,31 @@ import {useState, useEffect} from 'react'
 import { useParams } from 'react-router-dom' 
 import Client from '../services/Api'
 const MainFeed = ({user}) => {
-  const [posts, setPosts] = useState({})
+  const [posts, setPosts] = useState([])
   const {id} = useParams()
   const getPosts = async () => {
-    const posts = await Client.get(`/api/user/feed/${id}`)
-    console.log(posts.data)
-    setPosts(posts?.data)
+    const feedPosts = await Client.get(`/api/user/feed/${id}`)
+    console.log(feedPosts.data)
+    setPosts(feedPosts?.data)
     
   }
 
+  const userFeed = posts.map((post) => (
+    <div key={post.id}>
+      <p>{post.capRes}</p>
+
+    </div>
+  ))
+
   useEffect(() => {
     getPosts()
-  }, [])
+  }, [id])
 
 
   return (
-    <div>MainFeed</div>
+    <div>
+      {userFeed}
+    </div>
   )
 }
 

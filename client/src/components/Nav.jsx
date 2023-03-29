@@ -27,7 +27,7 @@ export default function Nav({user, handleLogout}) {
         >
           {/* <MenuIcon /> */}
         </IconButton>
-        <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+        <Typography variant="h6" component="div" sx={{ flexGrow: 1 }} onClick={() => {navigate('/')}}>
           Logo
         </Typography>
         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }} onClick={() => {navigate(`/feed/${user?.id}`)}}>
@@ -54,12 +54,10 @@ export default function Nav({user, handleLogout}) {
         >
           {/* <MenuIcon /> */}
         </IconButton>
-        <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+        <Typography variant="h6" component="div" sx={{ flexGrow: 1 }} onClick={() => {navigate('/')}}>
           Logo
         </Typography>
-        <Typography variant="h6" component="div" sx={{ flexGrow: 1 }} onClick={() => {navigate('/feed')}}>
-          Feed
-        </Typography>
+        
         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
           About
         </Typography>
