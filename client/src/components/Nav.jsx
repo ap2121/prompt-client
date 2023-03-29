@@ -7,7 +7,7 @@ import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import { useNavigate } from 'react-router-dom';
 
-export default function Nav({user}) {
+export default function Nav({user, handleLogout}) {
   const navigate = useNavigate()
   
   const test = () => {
@@ -36,7 +36,7 @@ export default function Nav({user}) {
         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
           Welcome: {user?.username}
         </Typography>
-        <Button color="inherit" onClick={()=> {navigate('/login')}}>Logout</Button>
+        <Button color="inherit" onClick={ handleLogout}>Logout</Button>
       </Toolbar>
     </AppBar>
   )

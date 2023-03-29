@@ -33,12 +33,12 @@ function App() {
   return (
     <div>
       <div>
-    <Nav user={user}/>
+    <Nav user={user} handleLogout={handleLogout}/>
     <button onClick={handleLogout}>logout</button>
       </div>
       <div>
     <Routes>
-      <Route path='/feed' element={<MainFeed/>}/>
+      <Route path='/feed/:id' element={<MainFeed/>} user={user}/>
       <Route path='/login' element={<Login setUser={setUser}/>}/>
       <Route path='register' element={<Register/>}/>
       <Route path='/about' element={<About/>}/>

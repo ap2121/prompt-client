@@ -28,7 +28,7 @@ const Login = ({setUser, user}) => {
     setUser(payload)
     console.log(payload)
     console.log(user)
-    navigate('/feed')
+    navigate(`/feed/${payload?.id}`)
   }
   
   
