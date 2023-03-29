@@ -11,6 +11,7 @@ body {
    
     display: flex;
     justify-content: center;
+  
     
    
     
@@ -23,7 +24,7 @@ body {
     grid-template-columns: 250px;
     justify-content: center;
     align-items: center;
-    height: 500px;
+    height: 600px;
     width: 375px;
     justify-content: center;
     text-align: center;
@@ -31,6 +32,7 @@ body {
     /* box-shadow: rgba(26, 212, 237, 0.35) 0px 5px 15px; */
     box-shadow: rgba(64, 148, 217, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
     margin-top: 60px;
+    background-color: red;
     
 
 }
@@ -38,6 +40,7 @@ body {
     display: grid;
     grid-template-columns: 250px;
     grid-gap: 20px;
+    
     
     
 }
@@ -49,6 +52,6 @@ body {
 
 img {
     height: 250px;
-    width: auto;
+    width: 250px;
     border-radius: 10px;
 }
