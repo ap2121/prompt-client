@@ -34,6 +34,7 @@ function App() {
     <div>
       <div>
     <Nav user={user}/>
+    <button onClick={handleLogout}>logout</button>
       </div>
       <div>
     <Routes>
