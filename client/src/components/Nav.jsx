@@ -30,7 +30,7 @@ export default function Nav({user, handleLogout}) {
         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
           Logo
         </Typography>
-        <Typography variant="h6" component="div" sx={{ flexGrow: 1 }} onClick={() => {navigate('/feed')}}>
+        <Typography variant="h6" component="div" sx={{ flexGrow: 1 }} onClick={() => {navigate(`/feed/${user?.id}`)}}>
           Feed
         </Typography>
         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>

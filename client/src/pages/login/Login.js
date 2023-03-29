@@ -26,8 +26,8 @@ const Login = ({setUser, user}) => {
       password: ''
     })
     setUser(payload)
-    console.log(payload)
-    console.log(user)
+    
+    
     navigate(`/feed/${payload?.id}`)
   }
   

@@ -39,6 +39,7 @@ function App() {
       <div>
     <Routes>
       <Route path='/feed/:id' element={<MainFeed/>} user={user}/>
+      <Route path='/pub-feed' element={<MainFeed/>}/>
       <Route path='/login' element={<Login setUser={setUser}/>}/>
       <Route path='register' element={<Register/>}/>
       <Route path='/about' element={<About/>}/>
