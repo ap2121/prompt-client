@@ -1,11 +1,11 @@
 import React from 'react'
 import {useState} from 'react'
-import { useNavigate, useParams } from 'react-router-dom'
+import { useNavigate, useParams, Link } from 'react-router-dom'
 import { TextField, Typography } from '@mui/material'
 import Client from '../services/Api'
 const CreatePost = () => {
   const [generatingPost, setGeneratingPost] = useState(false)
-  const [loading, setLoading] = useState(false)
+  
   const [formData, setFormData] = useState({
     imgPrompt: "",
     capPrompt: "",
@@ -29,7 +29,11 @@ const handleSubmit = async (e) => {
   try {
     const res = await Client.post(`/api/post/create-post/${id}`, {...formData})
     if(res) {
-      navigate(`/profile/${id}`)
+     setCurrentPost(res.data)
+     setFormData({
+      imgPrompt: "",
+      capPrompt: ""
+     })
     }
     
   } catch(error) {
@@ -38,7 +42,23 @@ const handleSubmit = async (e) => {
   
   
 }
+let postView = (
+  <div>
+    <img src={post?.imgRes}/>
+    <p style={{color: 'white'}}>{post.capRes}</p>
+    
+    <p>Post to feed</p>
+    <p>Retry</p>
+    
+  </div>
+)
 
+let noPostView = (
+  <div>
+    <img src='https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/A_black_image.jpg/640px-A_black_image.jpg' />
+    <p style={{color: 'white'}}>Caption</p>
+  </div>
+)
   return (
     <div>
       <form onSubmit={handleSubmit} style={{display: 'flex', justifyContent:'center'}}>
@@ -46,6 +66,10 @@ const handleSubmit = async (e) => {
       <TextField variant='outlined' label='Caption Prompt' name='capPrompt' value={formData.capPrompt} onChange={handleChange}/>
       <button>Add post</button>
       </form>
+      <div>
+        {post ? postView : noPostView}
+      </div>
+
     </div>
   )
 }

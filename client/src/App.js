@@ -46,7 +46,7 @@ function App() {
       <Route path='/login' element={<Login setUser={setUser}/>}/>
       <Route path='register' element={<Register/>}/>
       <Route path='/about' element={<About/>}/>
-      <Route path='/profile/:id' element={<ProfilePage/>}/>
+      <Route path='/profile/:id' element={<ProfilePage user={user}/>}/>
       <Route path='/create/:id' element={<CreatePost/>}/>
     </Routes>
       </div>

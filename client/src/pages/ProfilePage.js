@@ -3,7 +3,7 @@ import Client from '../services/Api'
 import { useState, useEffect } from 'react'
 import { useParams, useNavigate, Link } from 'react-router-dom'
 import { TextField, Button, Typography } from '@mui/material'
-const ProfilePage = () => {
+const ProfilePage = ({user}) => {
   const [currentProfile, setCurrentProfile] = useState(null)
   const [formData, setFormData] = useState({
     imgPrompt: "",
@@ -14,6 +14,7 @@ const ProfilePage = () => {
   const getUser = async () => {
     const userPro = await Client.get(`/api/user/users/${id}`)
     console.log(userPro.data)
+    console.log(user.id)
     setCurrentProfile(userPro.data)
 
   }
@@ -37,7 +38,7 @@ const ProfilePage = () => {
       <img src={currentProfile?.proPic}/>
       <h3 style={{color: 'white'}}>{currentProfile?.bio}</h3>
       <Link to={`/create/${id}`}>
-      <Typography style={{color: 'white'}}>Create New Post</Typography>
+      { user?.id === currentProfile?.id && <Typography style={{color: 'white'}}>Create New Post</Typography>}
       </Link>
         
       {currentProfile?.Posts?.map((p) => (
