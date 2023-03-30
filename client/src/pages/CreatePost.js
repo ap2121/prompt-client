@@ -26,7 +26,15 @@ const navigate = useNavigate()
 
 const handleSubmit = async (e) => {
   e.preventDefault()
-  Client.post(`/api/post/create-post/${id}`, {...formData})
+  try {
+    const res = await Client.post(`/api/post/create-post/${id}`, {...formData})
+    if(res) {
+      navigate(`/profile/${id}`)
+    }
+    
+  } catch(error) {
+    throw error
+  }
   
   
 }
