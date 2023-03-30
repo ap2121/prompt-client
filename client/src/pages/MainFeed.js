@@ -20,6 +20,7 @@ const MainFeed = ({user}) => {
    capRes={post.capRes}
    imgRes={post.imgRes}
    username={post.User.username}
+   id={post.userId}
    />
       
       
