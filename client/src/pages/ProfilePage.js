@@ -3,14 +3,14 @@ import Client from '../services/Api'
 import { useState, useEffect } from 'react'
 import { useParams, useNavigate, Link } from 'react-router-dom'
 const ProfilePage = () => {
-  const [currentUser, setCurrentUser] = useState(null)
+  const [currentProfile, setCurrentProfile] = useState(null)
 
   const { id } = useParams()
 
   const getUser = async () => {
     const userPro = await Client.get(`/api/user/users/${id}`)
     console.log(userPro.data)
-    setCurrentUser(userPro.data)
+    setCurrentProfile(userPro.data)
 
   }
 
@@ -20,9 +20,9 @@ const ProfilePage = () => {
   
   return (
     <div>
-      <h1 style={{color: 'white'}}>{currentUser?.bio}</h1>
-      <img src={currentUser?.proPic}/>
-      {currentUser?.Posts?.map((p) => (
+      <h1 style={{color: 'white'}}>{currentProfile?.bio}</h1>
+      <img src={currentProfile?.proPic}/>
+      {currentProfile?.Posts?.map((p) => (
         <div key={p.id}>
           
           <img src={p.imgRes}/>
@@ -30,16 +30,20 @@ const ProfilePage = () => {
         </div>
       ))}
        <p style={{color: 'white'}}>Followers:</p><br></br>
-       {currentUser?.Followers?.map((f) => (
+       {currentProfile?.Followers?.map((f) => (
         <div key={f.id}>
+        <Link to={`/profile/${f.id}`}>
         <p style={{color: 'white'}}>{f.username}</p>
+        </Link>
         </div>
       ))}
       <br></br>
       <p style={{color: 'white'}}>Following:</p><br></br>
-      {currentUser?.Following?.map((f) => (
+      {currentProfile?.Following?.map((f) => (
         <div key={f.id}> 
+        <Link to={`/profile/${f.id}`}>
         <p style={{color: 'white'}}>{f.username}</p>
+        </Link>
         </div>
       ))}
       </div>
