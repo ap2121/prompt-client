@@ -42,13 +42,28 @@ const handleSubmit = async (e) => {
   
   
 }
+const retryFacad = () => {
+  
+  const deleted = Client.delete(`api/post/posts/${post?.id}`)
+  if(deleted) {
+    navigate(`/create/${id}`)
+  }
+  setFormData({imgPrompt: "",
+  capPrompt: "",})
+  setCurrentPost({})
+  
+  
+}
+
 let postView = (
   <div>
     <img src={post?.imgRes}/>
-    <p style={{color: 'white'}}>{post.capRes}</p>
+    <p style={{color: 'white'}}>{post?.capRes}</p>
+    <Link to={`/profile/${id}`}>
+    <p style={{color: 'white'}}>Post to feed</p>
+    </Link>
     
-    <p>Post to feed</p>
-    <p>Retry</p>
+    <p style={{color: 'white'}} onClick={retryFacad}>Retry</p>
     
   </div>
 )
