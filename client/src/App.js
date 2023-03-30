@@ -4,6 +4,7 @@ import MainFeed from './pages/MainFeed'
 import Login from './pages/login/Login'
 import Register from './pages/register/Register'
 import ProfilePage from './pages/ProfilePage'
+import CreatePost from './pages/CreatePost'
 import Home from './pages/Home'
 import { Route, Routes, useNavigate } from 'react-router-dom'
 import './app.css'
@@ -46,6 +47,7 @@ function App() {
       <Route path='register' element={<Register/>}/>
       <Route path='/about' element={<About/>}/>
       <Route path='/profile/:id' element={<ProfilePage/>}/>
+      <Route path='/create/:id' element={<CreatePost/>}/>
     </Routes>
       </div>
     </div>
