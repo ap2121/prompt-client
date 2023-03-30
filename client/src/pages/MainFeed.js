@@ -2,6 +2,8 @@ import React from 'react'
 import {useState, useEffect} from 'react'
 import { useParams } from 'react-router-dom' 
 import Client from '../services/Api'
+import FeedPost from '../components/FeedPost'
+import { Typography } from '@mui/material'
 const MainFeed = ({user}) => {
   const [posts, setPosts] = useState([])
   const {id} = useParams()
@@ -13,10 +15,16 @@ const MainFeed = ({user}) => {
   }
 
   const userFeed = posts.map((post) => (
-    <div key={post.id}>
-      <p>{post.capRes}</p>
+   <FeedPost
+   key={post.id}
+   capRes={post.capRes}
+   imgRes={post.imgRes}
+   username={post.User.username}
+   />
+      
+      
 
-    </div>
+    
   ))
 
   useEffect(() => {
@@ -26,6 +34,10 @@ const MainFeed = ({user}) => {
 
   return (
     <div>
+      <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'space-between',  marginLeft: '200px'}}>
+      <Typography style={{color: 'white', fontSize: '50px'}}>Synapse</Typography>
+      
+      </div>
       {userFeed}
     </div>
   )

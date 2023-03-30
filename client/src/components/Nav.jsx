@@ -36,6 +36,7 @@ export default function Nav({user, handleLogout}) {
         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
           Welcome: {user?.username}
         </Typography>
+       
         <Button color="inherit" onClick={ handleLogout}>Logout</Button>
       </Toolbar>
     </AppBar>
