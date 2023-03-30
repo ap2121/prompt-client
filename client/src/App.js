@@ -6,6 +6,7 @@ import Register from './pages/register/Register'
 import ProfilePage from './pages/ProfilePage'
 import CreatePost from './pages/CreatePost'
 import Home from './pages/Home'
+import CommentView from './pages/CommentView'
 import { Route, Routes, useNavigate } from 'react-router-dom'
 import './app.css'
 import { CheckSession } from './services/Auth'
@@ -48,6 +49,7 @@ function App() {
       <Route path='/about' element={<About/>}/>
       <Route path='/profile/:id' element={<ProfilePage user={user}/>}/>
       <Route path='/create/:id' element={<CreatePost/>}/>
+      <Route path='/comment/:user_id/:post_id' element={<CommentView/>}/>
     </Routes>
       </div>
     </div>

@@ -21,6 +21,7 @@ const MainFeed = ({user}) => {
    imgRes={post.imgRes}
    username={post.User.username}
    userId={post.userId}
+   id={post.id}
    />
       
       
