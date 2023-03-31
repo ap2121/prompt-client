@@ -4,34 +4,56 @@ import { useState, useEffect } from 'react'
 import { useParams, useNavigate, Link } from 'react-router-dom'
 import { TextField, Button, Typography } from '@mui/material'
 const ProfilePage = ({user}) => {
-  const [currentProfile, setCurrentProfile] = useState(null)
-  const [formData, setFormData] = useState({
-    imgPrompt: "",
-    capPrompt: ""
-  })
-  const { id } = useParams()
-  const navigate = useNavigate()
-  const getUser = async () => {
-    const userPro = await Client.get(`/api/user/users/${id}`)
+  const [currentProfile, setCurrentProfile] = useState(false)
+  const [followers, setFollowers] = useState([])
+
+  const [following, setFollowing] = useState(false)  
+  const { user_id } = useParams()
+    const navigate = useNavigate()
+    
+    const test = () => {
+      console.log(user)
+    }
+    const getUser = async () => {
+    const userPro = await Client.get(`/api/user/users/${user_id}`)
     console.log(userPro.data)
-    console.log(user.id)
-    setCurrentProfile(userPro.data)
+    
+    setCurrentProfile(userPro?.data)
 
   }
+  // const getUserFollowing = async () => {
+  //   const currentFollowers = await Client.get(`/api/user/following/${user?.id}`)
+  //   console.log(currentFollowers)
+  //   setFollowers(currentFollowers)
+    
+  // }
+  
+  // const followUser = async () => {
+  //   await Client.post(`/api/user/follow/${user?.id}/${id}`)
+  //   setFollowing(true)
+  // }
+
+  // const unfolloweUser = async () => {
+  //   await Client.post(`/api/user/unfollow/${user?.id}/${id}`)
+  //   setFollowing(false)
+  // }
 
   
-  
+
 
   useEffect(() => {
     getUser()
-  }, [id])
+    // getUserFollowing()    
+  }, [user_id])
   
+
   return (
     <div>
-      
+      <button onClick={test}>Test</button>
       <img src={currentProfile?.proPic}/>
       <h3 style={{color: 'white'}}>{currentProfile?.bio}</h3>
-      <Link to={`/create/${id}`}>
+      {/* {user?.id !== currentProfile?.id && <button onClick={following ? unfolloweUser : followUser}>{following ? 'Unfollow': 'Follow'}</button>} */}
+      <Link to={`/create/${user_id}`}>
       { user?.id === currentProfile?.id && <Typography style={{color: 'white'}}>Create New Post</Typography>}
       </Link>
         
