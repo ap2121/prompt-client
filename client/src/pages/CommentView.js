@@ -1,13 +1,18 @@
 import React from 'react'
 import {useState, useEffect} from 'react'
-import {useParams, useNavigate} from 'react-router-dom'
+import {useParams, useNavigate, Link} from 'react-router-dom'
+import { TextField } from '@mui/material'
 import Client from '../services/Api'
 const CommentView = () => {
   const [post, setPost] = useState(null)
   const [comments, setComments] = useState([])
+  const [commenting, setCommenting] = useState(false)
+  
+
+
   const {post_id} = useParams()
   const {user_id} = useParams()
-
+  const navigate = useNavigate()
   const test = async () => {
     const selectedPost = await Client.get(`/api/post/posts/${post_id}`)
     console.log(selectedPost.data)
@@ -18,6 +23,8 @@ const CommentView = () => {
     console.log(pComments.data)
     setComments(pComments.data)
   }
+  
+  
   
   useEffect(() => {
     test()
@@ -32,10 +39,12 @@ const CommentView = () => {
         <div key={comment.id}>
           <p>{comment?.User.username}</p>
           <p>{comment?.comRes}</p>
-
-        </div>
+          </div>
       ))}
-    
+      <Link to={`/create-comment/${user_id}/${post_id}`}>
+      <button>Post Comment</button>
+      </Link>
+        
 
     </div>
   )

@@ -4,7 +4,7 @@ import { useNavigate, useParams, Link } from 'react-router-dom'
 import { TextField, Typography } from '@mui/material'
 import Client from '../services/Api'
 const CreatePost = () => {
-  const [generatingPost, setGeneratingPost] = useState(false)
+
   
   const [formData, setFormData] = useState({
     imgPrompt: "",
@@ -42,7 +42,7 @@ const handleSubmit = async (e) => {
   
   
 }
-const retryFacad = () => {
+const retryFacade = () => {
   
   const deleted = Client.delete(`api/post/posts/${post?.id}`)
   if(deleted) {
@@ -63,7 +63,7 @@ let postView = (
     <p style={{color: 'white'}}>Post to feed</p>
     </Link>
     
-    <p style={{color: 'white'}} onClick={retryFacad}>Retry</p>
+    <p style={{color: 'white'}} onClick={retryFacade}>Retry</p>
     
   </div>
 )
@@ -71,7 +71,7 @@ let postView = (
 let noPostView = (
   <div>
     <img src='https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/A_black_image.jpg/640px-A_black_image.jpg' />
-    <p style={{color: 'white'}}>Caption</p>
+    <p style={{color: 'white'}}>...</p>
   </div>
 )
   return (
@@ -82,7 +82,7 @@ let noPostView = (
       <button>Add post</button>
       </form>
       <div>
-        {post ? postView : noPostView}
+        {post?.id ? postView : noPostView}
       </div>
 
     </div>
