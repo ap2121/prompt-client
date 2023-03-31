@@ -19,14 +19,8 @@ const ProfilePage = ({user}) => {
 
   }
 
-  const handleChange = (e) => {
-    setFormData((prevFormData) => {
-      return {
-        ...prevFormData,
-        [e.target.name]: e.target.value
-      }
-    })
-  }
+  
+  
 
   useEffect(() => {
     getUser()

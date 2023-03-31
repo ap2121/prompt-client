@@ -11,7 +11,7 @@ const FeedPost = (props) => {
         </Link>
         <img src={props.imgRes} className='feed-img'/>
         <Typography style={{alignSelf: 'center', marginBottom:'10px'}}>{props.capRes}</Typography>
-        <Link to={`/comment/${props.userId}/${props.id}`}>
+        <Link to={`/comment/${props.currentId}/${props.id}`}>
         <Typography>Comments</Typography>
         </Link>
       </Card>

@@ -42,7 +42,7 @@ function App() {
       <div>
     <Routes>
       <Route path='/' element={<Home/>}/>
-      <Route path='/feed/:id' element={<MainFeed/>} user={user}/>
+      <Route path='/feed/:id' element={<MainFeed user={user}/>} />
       <Route path='/feed' element={<MainFeed/>}/>
       <Route path='/login' element={<Login setUser={setUser}/>}/>
       <Route path='register' element={<Register/>}/>

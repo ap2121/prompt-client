@@ -7,6 +7,11 @@ import { Typography } from '@mui/material'
 const MainFeed = ({user}) => {
   const [posts, setPosts] = useState([])
   const {id} = useParams()
+  
+  const test = () => {
+    console.log(user)
+  }
+
   const getPosts = async () => {
     const feedPosts = await Client.get(`/api/user/feed/${id}`)
     console.log(feedPosts.data)
@@ -22,6 +27,7 @@ const MainFeed = ({user}) => {
    username={post.User.username}
    userId={post.userId}
    id={post.id}
+   currentId={user?.id}
    />
       
       
@@ -40,7 +46,9 @@ const MainFeed = ({user}) => {
       <Typography style={{color: 'white', fontSize: '50px'}}>Synapse</Typography>
       
       </div>
+      <button onClick={test}>Test</button>
       {userFeed}
+      
     </div>
   )
 }
