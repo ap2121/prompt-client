@@ -22,18 +22,19 @@ const CommentView = () => {
   useEffect(() => {
     test()
     getComments()
-  }, [])
+  }, [post_id])
   return (
     <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>
       <p style={{color: 'white'}}>{post?.User?.username}</p>
       <img src={post?.imgRes}/>
       <p style={{color: 'white'}}>{post?.capRes}</p>
-      {post?.Comments?.map((comment) => (
+      {comments?.map((comment) => (
         <div key={comment.id}>
-          <p>{comment.comRes}</p>
+          <p>{comment?.User.username}</p>
+          <p>{comment?.comRes}</p>
+
         </div>
       ))}
-      
     
 
     </div>
