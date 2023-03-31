@@ -14,18 +14,15 @@ const CommentView = () => {
     setPost(selectedPost.data)
   }
   const getComments = async () => {
-    const pComments = await Client.get(`/api/comment/comments/${post_id}`)
+    const pComments = await Client.get(`/api/comment/post-comments/${post_id}`)
     console.log(pComments.data)
     setComments(pComments.data)
   }
   
   useEffect(() => {
     test()
-    
+    getComments()
   }, [])
-useEffect(() => {
-  getComments()
-}, [post_id])
   return (
     <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>
       <p style={{color: 'white'}}>{post?.User?.username}</p>
