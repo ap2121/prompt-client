@@ -6,18 +6,49 @@ import { TextField, Button, Typography } from '@mui/material'
 
 const Profile2 = ({user}) => {
   const [currentProfile, setCurrentProfile] = useState({})
+  const [following, setFollowing] = useState(false)
     const {profile_id} = useParams()
+    const {user_id} = useParams()
   const getPro = async () => {
     const profile = await Client.get(`/api/user/users/${profile_id}`)
-    console.log(profile.data)
+    
     setCurrentProfile(profile.data)
+  }
+ const checkFollowing = async () => {
+    const res = await Client.get(`/api/user/follow-check/${user_id}/${profile_id}`)
+    if(res.status === 200) {
+        setFollowing(true)
+    } else if(res.status === 205) {
+        setFollowing(false)
+    }
+ }
+  
+  const followUser = async () => {
+    await Client.post(`/api/user/follow/${user_id}/${profile_id}`)
+    setFollowing(true)
+  }
+
+  const unfollowUser = async () => {
+    await Client.post(`/api/user/unfollow/${user_id}/${profile_id}`)
+    setFollowing(false)
   }
 
   useEffect(() => {
     getPro()
-  }, [profile_id])
-    return (
+    
+    
+    
+  }, [])
+    
+  useEffect(() => {
+    checkFollowing()
+  }, [user_id, profile_id])
+  return (
     <div>
+         <div>
+        
+    <button onClick={following ? unfollowUser : followUser}>{following ? 'Unfollow' : 'Follow'}</button>        
+    </div>
         <img src={currentProfile?.proPic}/>
         <p>{currentProfile?.bio}</p>
         {currentProfile?.Posts?.map((post) => (
@@ -26,7 +57,7 @@ const Profile2 = ({user}) => {
             <p>{post.capRes}</p>
             </div>
         ))}
-
+   
     </div>
   )
 }

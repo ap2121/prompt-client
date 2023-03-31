@@ -28,15 +28,7 @@ const ProfilePage = ({user}) => {
     
   // }
   
-  // const followUser = async () => {
-  //   await Client.post(`/api/user/follow/${user?.id}/${id}`)
-  //   setFollowing(true)
-  // }
-
-  // const unfolloweUser = async () => {
-  //   await Client.post(`/api/user/unfollow/${user?.id}/${id}`)
-  //   setFollowing(false)
-  // }
+  
 
   
 
@@ -67,7 +59,7 @@ const ProfilePage = ({user}) => {
        <p style={{color: 'white'}}>Followers:</p><br></br>
        {currentProfile?.Followers?.map((f) => (
         <div key={f.id}>
-        <Link to={`/profile/${f.id}`}>
+        <Link to={`/profile-2/${user?.id}/${f.id}`}>
         <p style={{color: 'white'}}>{f.username}</p>
         </Link>
         </div>
