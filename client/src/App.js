@@ -9,6 +9,7 @@ import Home from './pages/Home'
 import CommentView from './pages/CommentView'
 import CreateComment from './pages/CreateComment'
 import Profile2 from './pages/Profile2'
+import PostDetail from './pages/PostDetail'
 import { Route, Routes, useNavigate } from 'react-router-dom'
 import './app.css'
 import { CheckSession } from './services/Auth'
@@ -54,6 +55,7 @@ function App() {
       <Route path='/comment/:user_id/:post_id' element={<CommentView/>}/>
       <Route path='/create-comment/:user_id/:post_id' element={<CreateComment/>}/>
       <Route path='/profile-2/:user_id/:profile_id' element={<Profile2/>}/>
+      <Route path='/user-post/:post_id' element={<PostDetail/>}/>
     </Routes>
       </div>
     </div>

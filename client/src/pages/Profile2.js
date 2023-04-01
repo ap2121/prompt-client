@@ -15,10 +15,10 @@ const Profile2 = ({user}) => {
     setCurrentProfile(profile.data)
   }
  const checkFollowing = async () => {
-    const res = await Client.get(`/api/user/follow-check/${user_id}/${profile_id}`)
+    const res = await Client.get(`/api/user/follow-check/${profile_id}/${user_id}`)
     if(res.status === 200) {
         setFollowing(true)
-    } else if(res.status === 205) {
+    } else if(res.status === 202) {
         setFollowing(false)
     }
  }
@@ -35,14 +35,12 @@ const Profile2 = ({user}) => {
 
   useEffect(() => {
     getPro()
-    
+    checkFollowing()
     
     
   }, [])
     
-  useEffect(() => {
-    checkFollowing()
-  }, [user_id, profile_id])
+  
   return (
     <div>
          <div>
