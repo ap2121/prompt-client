@@ -57,7 +57,7 @@ function App() {
       <Route path='/comment/:user_id/:post_id' element={<CommentView/>}/>
       <Route path='/create-comment/:user_id/:post_id' element={<CreateComment/>}/>
       <Route path='/profile-2/:user_id/:profile_id' element={<Profile2/>}/>
-      <Route path='/user-post/:post_id' element={<PostDetail/>}/>
+      <Route path='/user-post/:post_id' element={<PostDetail user={user}/>}/>
       <Route path='/edit-propic/:user_id' element={<EditProPic user={user}/>} />
       <Route path='/edit-bio/:user_id' element={<EditBio user={user}/>}/>
     </Routes>
