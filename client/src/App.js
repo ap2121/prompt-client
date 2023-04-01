@@ -51,7 +51,7 @@ function App() {
       <Route path='register' element={<Register/>}/>
       <Route path='/about' element={<About/>}/>
       <Route path='/profile/:user_id' element={<ProfilePage user={user}/>}/>
-      <Route path='/create/:id' element={<CreatePost/>}/>
+      <Route path='/create/:user_id' element={<CreatePost user={user}/>}/>
       <Route path='/comment/:user_id/:post_id' element={<CommentView/>}/>
       <Route path='/create-comment/:user_id/:post_id' element={<CreateComment/>}/>
       <Route path='/profile-2/:user_id/:profile_id' element={<Profile2/>}/>

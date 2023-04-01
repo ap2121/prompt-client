@@ -3,7 +3,7 @@ import {useState} from 'react'
 import { useNavigate, useParams, Link } from 'react-router-dom'
 import { TextField, Typography } from '@mui/material'
 import Client from '../services/Api'
-const CreatePost = () => {
+const CreatePost = ({user}) => {
 
   
   const [formData, setFormData] = useState({
@@ -21,13 +21,13 @@ const CreatePost = () => {
       }
     })
   }
-const { id } = useParams()
+const { user_id } = useParams()
 const navigate = useNavigate()
 
 const handleSubmit = async (e) => {
   e.preventDefault()
   try {
-    const res = await Client.post(`/api/post/create-post/${id}`, {...formData})
+    const res = await Client.post(`/api/post/create-post/${user_id}`, {...formData})
     if(res) {
      setCurrentPost(res.data)
      setFormData({
@@ -46,7 +46,7 @@ const retryFacade = () => {
   
   const deleted = Client.delete(`api/post/posts/${post?.id}`)
   if(deleted) {
-    navigate(`/create/${id}`)
+    navigate(`/create/${user_id}`)
   }
   setFormData({imgPrompt: "",
   capPrompt: "",})
@@ -59,7 +59,7 @@ let postView = (
   <div>
     <img src={post?.imgRes}/>
     <p style={{color: 'white'}}>{post?.capRes}</p>
-    <Link to={`/profile/${id}`}>
+    <Link to={`/profile/${user_id}`}>
     <p style={{color: 'white'}}>Post to feed</p>
     </Link>
     
@@ -76,11 +76,13 @@ let noPostView = (
 )
   return (
     <div>
-      <form onSubmit={handleSubmit} style={{display: 'flex', justifyContent:'center'}}>
+       { user?.id == user_id && <div>
+       <form onSubmit={handleSubmit} style={{display: 'flex', justifyContent:'center'}}>
       <TextField variant='outlined' label='Image Prompt' name='imgPrompt' value={formData.imgPrompt} onChange={handleChange}/>
       <TextField variant='outlined' label='Caption Prompt' name='capPrompt' value={formData.capPrompt} onChange={handleChange}/>
       <button>Add post</button>
       </form>
+      </div>}
       <div>
         {post?.id ? postView : noPostView}
       </div>
