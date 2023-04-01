@@ -5,9 +5,9 @@ import { useParams, useNavigate, Link } from 'react-router-dom'
 import { TextField, Button, Typography } from '@mui/material'
 const ProfilePage = ({user}) => {
   const [currentProfile, setCurrentProfile] = useState(false)
-  const [followers, setFollowers] = useState([])
+  const [updating, setUpdating] = useState(false) 
 
-  const [following, setFollowing] = useState(false)  
+  
   const { user_id } = useParams()
   const navigate = useNavigate()
     
@@ -21,12 +21,10 @@ const ProfilePage = ({user}) => {
     setCurrentProfile(userPro?.data)
 
   }
-  // const getUserFollowing = async () => {
-  //   const currentFollowers = await Client.get(`/api/user/following/${user?.id}`)
-  //   console.log(currentFollowers)
-  //   setFollowers(currentFollowers)
-    
-  // }
+  
+  const toggleEdit = () => {
+    setUpdating(!updating)
+  }
   
 
 
@@ -35,7 +33,7 @@ const ProfilePage = ({user}) => {
 
   useEffect(() => {
     getUser()
-    // getUserFollowing()    
+     
   }, [user_id])
   
 
@@ -45,7 +43,11 @@ const ProfilePage = ({user}) => {
       { user?.id == user_id && <div>
       
       <img src={currentProfile?.proPic}/>
+      {updating && <button onClick={() => {navigate(`/edit-propic/${user_id}`)}}>Update Profile Pic</button>}
+      { updating && <button onClick={() => {navigate(`/edit-bio/${user_id}`)}}>Update Bio</button>}
       <h3 style={{color: 'white'}}>{currentProfile?.bio}</h3>
+      
+      <button onClick={toggleEdit}>Update Profile</button>
       </div>}
       {user?.id == user_id && <Link to={`/create/${user_id}`}>
       <Typography style={{color: 'white'}}>Create New Post</Typography>

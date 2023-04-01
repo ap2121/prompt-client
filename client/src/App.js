@@ -10,6 +10,8 @@ import CommentView from './pages/CommentView'
 import CreateComment from './pages/CreateComment'
 import Profile2 from './pages/Profile2'
 import PostDetail from './pages/PostDetail'
+import EditBio from './pages/EditBio'
+import EditProPic from './pages/EditProPic'
 import { Route, Routes, useNavigate } from 'react-router-dom'
 import './app.css'
 import { CheckSession } from './services/Auth'
@@ -56,6 +58,8 @@ function App() {
       <Route path='/create-comment/:user_id/:post_id' element={<CreateComment/>}/>
       <Route path='/profile-2/:user_id/:profile_id' element={<Profile2/>}/>
       <Route path='/user-post/:post_id' element={<PostDetail/>}/>
+      <Route path='/edit-propic/:user_id' element={<EditProPic user={user}/>} />
+      <Route path='/edit-bio/:user_id' element={<EditBio user={user}/>}/>
     </Routes>
       </div>
     </div>
