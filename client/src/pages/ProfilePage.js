@@ -74,7 +74,7 @@ const ProfilePage = ({user}) => {
       <p style={{color: 'white'}}>Following:</p><br></br>
       {currentProfile?.Following?.map((f) => (
         <div key={f.id}> 
-        { user?.id == user_id && <Link to={`/profile/${f.id}`}>
+        { user?.id == user_id && <Link to={`/profile-2/${user?.id}/${f.id}`}>
         <p style={{color: 'white'}}>{f.username}</p>
         </Link>}
         </div>

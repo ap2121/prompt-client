@@ -1,6 +1,6 @@
 import React from 'react'
 import {useState, useEffect} from 'react'
-import { useParams, useNavigate} from 'react-router-dom'
+import { useParams, useNavigate, Link} from 'react-router-dom'
 import Client from '../services/Api'
 const PostDetail = ({user}) => {
   const [currentPost, setCurrentPost] = useState({})
@@ -8,7 +8,7 @@ const PostDetail = ({user}) => {
   const navigate = useNavigate()
   const getPost = async () => {
     const post = await Client.get(`/api/post/posts/${post_id}`)
-    console.log(post.data)
+    
     setCurrentPost(post.data)
   }
 
@@ -21,7 +21,10 @@ const PostDetail = ({user}) => {
   
   return (
     <div>
-      <p>{currentPost?.User?.user}</p>
+      <Link to={`/profile/${user?.id}`}>
+      <h4>Back to profile</h4>
+      </Link>
+      <p style={{color: 'white'}}>{currentPost?.User?.username}</p>
       <img src={currentPost?.imgRes}/>
       <p style={{color: 'white'}}>{currentPost?.capRes}</p>
       <button onClick={async () => {

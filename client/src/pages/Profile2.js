@@ -9,6 +9,7 @@ const Profile2 = ({user}) => {
   const [following, setFollowing] = useState(false)
     const {profile_id} = useParams()
     const {user_id} = useParams()
+    const navigate  = useNavigate()
   const getPro = async () => {
     const profile = await Client.get(`/api/user/users/${profile_id}`)
     
@@ -38,7 +39,7 @@ const Profile2 = ({user}) => {
     checkFollowing()
     
     
-  }, [])
+  }, [user_id, profile_id])
     
   
   return (
@@ -55,7 +56,18 @@ const Profile2 = ({user}) => {
             <p>{post.capRes}</p>
             </div>
         ))}
-   
+        <h3 style={{color: 'white'}}>Followers: </h3>{currentProfile?.Followers?.map((f) =>(
+            <div key={f.id}>
+                <Link to={`/profile-2/${user?.id}/${f.id}`}>
+                <p style={{color: 'white'}}>{f.username}</p>
+                </Link>
+            </div>
+        ))}
+       <h3 style={{color: 'white'}}>Following</h3>{currentProfile?.Following?.map((f) => (
+            <div key={f.id}>
+                <p style={{color: 'white'}}>{f.username}</p>
+            </div>
+        ))}
     </div>
   )
 }
