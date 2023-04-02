@@ -24,9 +24,9 @@ const ProfilePage = ({user}) => {
   }
   
   const getUserPosts = async () => {
-    const allPosts = await Client.get(`/api/post/user-posts/${user_id}`)
-    console.log(allPosts.data)
-    setUserPosts(allPosts.data)
+    const res = await Client.get(`/api/post/user-posts/${user_id}`)
+    console.log(res.data)
+    setUserPosts(res.data)
   }
   
   
@@ -50,15 +50,18 @@ const ProfilePage = ({user}) => {
     <div>
      <div style={{display: 'flex', justifyContent: 'space-evenly', alignItems: 'center', marginTop: '30px'}}>
      
-     <div style={{height: '300px', width: '150px' ,display: 'flex', flexDirection: 'column', border: '5px solid teal', borderRadius: '35px', overflow: 'scroll'}}>
+     <div style={{height: '300px', width: '150px' ,display: 'flex', flexDirection: 'column', border: '5px solid rgba(9,9,118,1)', borderRadius: '35px', overflow: 'scroll'}}>
      <h3 style={{textAlign: 'center', fontSize: '20px', color: 'white', marginBottom: '20px', marginTop: '10px'}}>Followers</h3>
      {currentProfile?.Followers?.map((f) => (
       <div key={f.id}>
+        <Link to={`/profile-2/${user_id}/${f?.id}`} style={{textDecoration: 'none'}}> 
         <div style={{display: 'flex', alignItems: 'center', fontSize: '20px'}}>
-        <img src={f?.proPic} style={{height: '20px', width: '20px', borderRadius: '50%', marginRight: '10px', margin: '5px'}}/>
         
+        <img src={f?.proPic} style={{height: '20px', width: '20px', borderRadius: '50%', marginRight: '10px', margin: '5px'}}/>
         <p style={{color: 'white'}}>{f?.username}</p>
+       
       </div>
+      </Link>
       </div>
 
      ))}
@@ -69,10 +72,12 @@ const ProfilePage = ({user}) => {
       <h3 style={{textAlign: 'center', fontSize: '20px', color: 'white', marginBottom: '20px', marginTop: '10px'}}>Following</h3>
       {currentProfile?.Following?.map((f) => (
         <div key={f.id}> 
-        <div style={{display: 'flex', alignItems: 'center', fontSize: '20px'}}>
+       <Link to={`/profile-2/${user_id}/${f?.id}`} style={{textDecoration:'none'}}>
+       <div style={{display: 'flex', alignItems: 'center', fontSize: '20px'}}>
         <img src={f?.proPic} style={{height: '20px', width: '20px', borderRadius: '50%', margin: '5px'}}/>
         <p style={{color: 'white'}}>{f?.username}</p>
         </div>
+        </Link>
         </div>
       ))}
       </div>
