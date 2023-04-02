@@ -47,10 +47,17 @@ const CommentView = () => {
       <div  style={{display: 'flex', justifyContent: 'center', textDecoration: 'none'}}>
       
       </div>
-     <div style={{ height: '500px', width: '500px', overflow: 'scroll', }}>
+     <div style={{ height: '400px', width: '900px', overflow: 'scroll', }}>
+     <Link to={`/create-comment/${user_id}/${post_id}`}>
+      <div style={{display: 'flex', justifyContent: 'flex-end', marginTop: '5px'}}>
+      <AddCommentOutlinedIcon style={{height: '50px', width: '50px', color: 'rgba(9,9,118,1)'}}/>
+      </div>
+      </Link>
      <Card style={{margin: '30px', padding: '20px', background:  'rgba(9,9,118,1)', color: 'white'}}>
      <p style={{marginRight: '10px'}}>@{post?.User?.username}</p>
+     
      <p>{post?.capRes}</p>
+     
      </Card>
       { comments?.map((comment) => (
         <div key={comment.id}>
@@ -68,11 +75,7 @@ const CommentView = () => {
       )) }
     
     </div>
-      <Link to={`/create-comment/${user_id}/${post_id}`}>
-      <div style={{display: 'flex', justifyContent: 'flex-end', marginTop: '10px'}}>
-      <AddCommentOutlinedIcon style={{height: '50px', width: '50px', color: 'rgba(9,9,118,1)'}}/>
-      </div>
-      </Link>
+      
       </div>
       
       </div>
