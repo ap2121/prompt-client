@@ -37,7 +37,7 @@ const Login = ({setUser, user}) => {
       <section className='login-card-cnt'> 
       <Card variant='outlined' className='login-cnt' style={{ background:  'rgb(8, 123, 155)', borderRadius: '20px', fontFamily: 'font-family: Nova Flat, cursive', height: '600px'}}>
         <Typography variant='h4'>Login</Typography>
-        <img src='https://res.cloudinary.com/dntodeqe9/image/upload/v1680036226/zqljylr7svhkphvn5a8y.png' alt='an ai drawn picture of a big robot'/>
+        <img src='https://res.cloudinary.com/dntodeqe9/image/upload/v1680036226/zqljylr7svhkphvn5a8y.png' alt='an ai drawn picture of a big robot' className='login-img'/>
         <section className='input-cnt'>
         <form onSubmit={handleSubmit}>
         <TextField label="email" variant='outlined' className='login-inpt' onChange={handleChange} name='email' value={formValues.email

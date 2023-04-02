@@ -1,12 +1,13 @@
 import React from 'react'
 import {useState, useEffect} from 'react'
 import {useParams, useNavigate, Link} from 'react-router-dom'
-import { TextField } from '@mui/material'
+import { TextField, Card } from '@mui/material'
 import Client from '../services/Api'
+import AddCommentOutlinedIcon from '@mui/icons-material/AddCommentOutlined';
 const CommentView = () => {
   const [post, setPost] = useState(null)
   const [comments, setComments] = useState([])
-  const [commenting, setCommenting] = useState(false)
+
   
 
 
@@ -31,22 +32,55 @@ const CommentView = () => {
     getComments()
   }, [post_id])
   return (
-    <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>
-      <p style={{color: 'white'}}>{post?.User?.username}</p>
-      <img src={post?.imgRes}/>
-      <p style={{color: 'white'}}>{post?.capRes}</p>
-      {comments?.map((comment) => (
+    <div>
+     
+     <div style={{display: 'flex', justifyContent: 'center', flexDirection: 'column', alignItems: 'center'}}>
+      
+     
+      <div>
+     
+     
+      
+      </div>
+      {/* <img src={post?.imgRes} style={{height: '300px', width: '300px', marginTop: '20px', borderRadius: '35px', marginBottom: '20px', marginTop: '40px'}}/> */}
+      <div>
+      <div  style={{display: 'flex', justifyContent: 'center', textDecoration: 'none'}}>
+      
+      </div>
+     <div style={{ height: '500px', width: '500px', overflow: 'scroll', }}>
+     <Card style={{margin: '30px', padding: '20px', background:  'rgba(9,9,118,1)', color: 'white'}}>
+     <p style={{marginRight: '10px'}}>@{post?.User?.username}</p>
+     <p>{post?.capRes}</p>
+     </Card>
+      { comments?.map((comment) => (
         <div key={comment.id}>
-          <p>{comment?.User.username}</p>
+          <Card style={{margin: '30px', padding: '20px', background:  'rgba(9,9,118,1)'}}>
+          <div style={{display: 'flex', alignItems: 'center', color: 'white'}}>
+          <p style={{marginRight: '20px'}}>@{comment?.User?.username}</p>
           <p>{comment?.comRes}</p>
           </div>
-      ))}
-      <Link to={`/create-comment/${user_id}/${post_id}`}>
-      <button>Post Comment</button>
-      </Link>
-        
-
+          </Card>
+          
+          </div>
+       
+          
+          
+      )) }
+    
     </div>
+      <Link to={`/create-comment/${user_id}/${post_id}`}>
+      <div style={{display: 'flex', justifyContent: 'flex-end', marginTop: '10px'}}>
+      <AddCommentOutlinedIcon style={{height: '50px', width: '50px', color: 'rgba(9,9,118,1)'}}/>
+      </div>
+      </Link>
+      </div>
+      
+      </div>
+      
+      </div>
+     
+      
+    
   )
 }
 

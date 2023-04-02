@@ -1,5 +1,9 @@
 .feed-img {
-    height: 500px;
-    width: 500px;
+    height: 520px;
+    width: 520px;
+    margin-top: auto;
     margin-bottom: auto;
+    border-radius: none;
+    box-shadow: none;
+   
 }

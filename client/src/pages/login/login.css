@@ -50,7 +50,7 @@ body {
     margin: 10px;
 }
 
-img {
+.login-img {
     height: 250px;
     width: 250px;
     border-radius: 10px;

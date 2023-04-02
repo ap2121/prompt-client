@@ -8,9 +8,7 @@ const MainFeed = ({user}) => {
   const [posts, setPosts] = useState([])
   const {id} = useParams()
   
-  const test = () => {
-    console.log(user)
-  }
+
 
   const getPosts = async () => {
     const feedPosts = await Client.get(`/api/user/feed/${id}`)
@@ -28,6 +26,7 @@ const MainFeed = ({user}) => {
    userId={post.userId}
    id={post.id}
    currentId={user?.id}
+   proPic={post.User.proPic}
    />
       
       
@@ -43,10 +42,10 @@ const MainFeed = ({user}) => {
   return (
     <div>
       <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'space-between',  marginLeft: '200px'}}>
-      <Typography style={{color: 'white', fontSize: '50px'}}>Synapse</Typography>
+      <h1 style={{color: 'white', fontSize: '50px'}}>Synapse</h1>
       
       </div>
-      <button onClick={test}>Test</button>
+      
       {userFeed}
       
     </div>
