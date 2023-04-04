@@ -91,7 +91,7 @@ const Profile2 = ({user}) => {
      
    
     <div style={{display: 'flex', justifyContent: 'center', marginTop: '25px'}}>
-      <h3 style={{color: 'white', fontSize: '50px'}}>@{currentProfile?.username}</h3>
+      <h3 style={{color: 'white', fontSize: '50px'}}>{currentProfile?.username}</h3>
     </div>
     <div style={{display: 'flex', justifyContent: 'center', marginTop: '20px'}}> 
      <button onClick={following ? unfollowUser : followUser} style={{width: '250px', padding: '20px', fontSize: '20px', color: 'white', background: 'rgba(9,9,118,1)', borderRadius: '35px'}}>{following ? 'Unfollow' : 'Follow'}</button>
@@ -105,13 +105,15 @@ const Profile2 = ({user}) => {
       
       
     </div>
-    <div style={{display: 'grid',  justifyContent: 'center',gridTemplateColumns: '325px 325px 325px 325px', gridGap: '25px', marginTop: '20px', marginBottom: '20px'}}>
+    <div style={{display: 'grid',  justifyContent: 'center',gridTemplateColumns: '325px 325px 325px', gridGap: '25px', marginTop: '20px', marginBottom: '20px'}}>
       {userPosts?.map((p) => (
         <div key={p?.id}>
         <Card style={{height: '400px', width: '325px', display: 'flex', flexDirection: 'column',justifyContent: 'center', alignItems: 'center', background: 'rgba(9,9,118,1)', borderRadius: '35px',}}>
         <img src={p?.imgRes} style={{height: '325px', width: '325px', marginBottom: 'auto'}}/>
         <p style={{color: 'white', fontSize: '15px', textAlign: 'center', marginBottom: 'auto'}}>{p?.capRes}</p>
+        <Link to={`/comment/${user_id}/${p?.id}`}>
         <ModeCommentOutlinedIcon style={{color: 'white', marginLeft: 'auto', marginRight: '17px', marginBottom: '10px'}}/>
+        </Link>
         </Card>
         </div>
       ))}

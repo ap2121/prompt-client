@@ -20,21 +20,17 @@ const PostDetail = ({user}) => {
   
   
   return (
-    <div>
-      <Link to={`/profile/${user?.id}`}>
-      <h4>Back to profile</h4>
-      </Link>
-      <p style={{color: 'white'}}>{currentPost?.User?.username}</p>
-      <img src={currentPost?.imgRes}/>
-      <p style={{color: 'white'}}>{currentPost?.capRes}</p>
-      <button onClick={async () => {
-        const deleted = await Client.delete(`/api/post/posts/${post_id}`)
-        if(deleted) {
-          navigate(`/profile/${user?.id}`)
-        }
-      }}>Delete Post</button>
-
+  <div>
+    <div className='detail-cnt'>
+      <img src={currentPost?.imgRes} className='detail-img'/>
     </div>
+    <div className='detail-cnt'>
+      <p className='detail-bio'>{currentPost?.capRes}</p>
+    </div>
+    <div className='detail-cnt'>
+      <button className='detail-btn'>Delete Post</button>
+    </div>
+  </div>
   )
 }
 

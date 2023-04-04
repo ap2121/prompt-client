@@ -4,7 +4,7 @@ import {useParams, useNavigate, Link} from 'react-router-dom'
 import { TextField, Card } from '@mui/material'
 import Client from '../services/Api'
 import AddCommentOutlinedIcon from '@mui/icons-material/AddCommentOutlined';
-const CommentView = () => {
+const CommentView = ({user}) => {
   const [post, setPost] = useState(null)
   const [comments, setComments] = useState([])
 
@@ -62,10 +62,12 @@ const CommentView = () => {
       { comments?.map((comment) => (
         <div key={comment.id}>
           <Card style={{margin: '30px', padding: '20px', background:  'rgba(9,9,118,1)'}}>
+          <Link to={user?.id == comment?.userId ? `/profile/${user_id}` : `/profile-2/${user_id}/${comment?.userId}`}>
           <div style={{display: 'flex', alignItems: 'center', color: 'white'}}>
           <p style={{marginRight: '20px'}}>@{comment?.User?.username}</p>
           <p>{comment?.comRes}</p>
           </div>
+          </Link>
           </Card>
           
           </div>

@@ -48,9 +48,9 @@ const ProfilePage = ({user}) => {
 
   return (
     <div>
-     <div style={{display: 'flex', justifyContent: 'space-evenly', alignItems: 'center', marginTop: '30px'}}>
+     <div className='flwr-pro-pic-cnt'>
      
-     <div style={{height: '300px', width: '150px' ,display: 'flex', flexDirection: 'column', border: '5px solid rgba(9,9,118,1)', borderRadius: '35px', overflow: 'scroll'}}>
+     <div className='flwr-cnt'>
      <h3 style={{textAlign: 'center', fontSize: '20px', color: 'white', marginBottom: '20px', marginTop: '10px'}}>Followers</h3>
      {currentProfile?.Followers?.map((f) => (
       <div key={f.id}>
@@ -66,9 +66,9 @@ const ProfilePage = ({user}) => {
 
      ))}
      </div>
-     <img src={currentProfile?.proPic} style={{height: '400px', width: '400px', borderRadius: '50%'}}/>
+     <img src={currentProfile?.proPic} style={{height: '400px', width: '400px', border: '3px solid rgba(9,9,118,1)', borderRadius: '50%'}}/>
 
-      <div style={{height: '300px', width: '150px' ,display: 'flex', flexDirection: 'column', border: '5px solid rgba(9,9,118,1)', borderRadius: '35px', overflow: 'scroll'}}>
+      <div className='flwr-cnt'>
       <h3 style={{textAlign: 'center', fontSize: '20px', color: 'white', marginBottom: '20px', marginTop: '10px'}}>Following</h3>
       {currentProfile?.Following?.map((f) => (
         <div key={f.id}> 
@@ -92,6 +92,7 @@ const ProfilePage = ({user}) => {
     <div style={{display: 'flex', justifyContent: 'center', marginTop: '15px'}}>
       
        <button onClick={toggleEdit} style={{padding: '10px', borderRadius: '35px'}}>{!updating ?'Edit Profile' : 'Cancel'}</button>
+       <button onClick={() => {navigate(`/create/${user_id}`)}} style={{padding: '10px', borderRadius: '35px', marginLeft: '10px'}}>New Post</button>
       
 
   
@@ -107,13 +108,18 @@ const ProfilePage = ({user}) => {
       
       
     </div>
-    <div style={{display: 'grid',  justifyContent: 'center',gridTemplateColumns: '325px 325px 325px 325px', gridGap: '25px', marginTop: '20px', marginBottom: '20px'}}>
+    <div style={{display: 'grid',  justifyContent: 'center',gridTemplateColumns: '325px 325px 325px', gridGap: '25px', marginTop: '20px', marginBottom: '20px'}}>
       {userPosts?.map((p) => (
         <div key={p?.id}>
         <Card style={{height: '400px', width: '325px', display: 'flex', flexDirection: 'column',justifyContent: 'center', alignItems: 'center', background: 'rgba(9,9,118,1)', borderRadius: '35px',}}>
+        <Link to={`/user-post/${p?.id}`}>
         <img src={p?.imgRes} style={{height: '325px', width: '325px', marginBottom: 'auto'}}/>
+        </Link>  
         <p style={{color: 'white', fontSize: '15px', textAlign: 'center', marginBottom: 'auto'}}>{p?.capRes}</p>
+      
+        <Link to={`/comment/${user_id}/${p?.id}`}>
         <ModeCommentOutlinedIcon style={{color: 'white', marginLeft: 'auto', marginRight: '17px', marginBottom: '10px'}}/>
+        </Link>
         </Card>
         </div>
       ))}

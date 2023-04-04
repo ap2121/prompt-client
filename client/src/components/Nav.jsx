@@ -10,14 +10,12 @@ import { useNavigate } from 'react-router-dom';
 export default function Nav({user, handleLogout}) {
   const navigate = useNavigate()
   
-  const test = () => {
-    console.log(user)
-  }
+  
 
   let userOptions = (
     <AppBar position="static">
       <Toolbar>
-        <button onClick={test}>test</button>
+        
         <IconButton
           size="large"
           edge="start"
@@ -27,13 +25,11 @@ export default function Nav({user, handleLogout}) {
         >
           {/* <MenuIcon /> */}
         </IconButton>
-        <Typography variant="h6" component="div" sx={{ flexGrow: 1 }} onClick={() => {navigate('/')}}>
-          Logo
-        </Typography>
-        <Typography variant="h6" component="div" sx={{ flexGrow: 1 }} onClick={() => {navigate(`/feed/${user?.id}`)}}>
+     
+        <Typography variant="h6" component="div" sx={{ flexGrow: 1 }} onClick={() => {navigate(`/feed/${user?.id}`)}} className='nav-hvr'>
           Feed
         </Typography>
-        <Typography variant="h6" component="div" sx={{ flexGrow: 1 }} onClick={() => {navigate(`/profile/${user?.id}`)}}>
+        <Typography variant="h6" component="div" sx={{ flexGrow: 1 }} onClick={() => {navigate(`/profile/${user?.id}`)}} className='nav-hvr'>
           Welcome: {user?.username}
         </Typography>
        
@@ -45,7 +41,7 @@ export default function Nav({user, handleLogout}) {
   let publicOptions = (
     <AppBar position="static">
       <Toolbar>
-        <button onClick={test}>test</button>
+        
         <IconButton
           size="large"
           edge="start"
