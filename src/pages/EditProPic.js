@@ -43,11 +43,16 @@ const EditProPic = () => {
 
    
     return (
-    <div style={{display: 'flex', justifyContent: 'center'}}>
-        <img src={currentUser?.proPic}/>
-        <form onSubmit={handleSubmit}>
-        <TextField  variant='outlined' name='proPicPrompt' value={formData.proPicPrompt} onChange={handleChange}/>
-        <button>Confirm Update</button>
+    <div>
+        <div className='edit-hdr-cnt'>
+          <p>New Picture</p>
+        </div>
+        <div className='edit-img-cnt'>
+        <img src={currentUser?.proPic} className='edit-img'/>
+        </div>
+        <form onSubmit={handleSubmit} className='edit-cnt'>
+        <TextField  variant='outlined' name='proPicPrompt' value={formData.proPicPrompt} onChange={handleChange} sx={{input: {color: 'white', height: '100px', textAlign: 'center'}}}/>
+        <button className='edit-btn'>Confirm Update</button>
         </form>
         
     </div>

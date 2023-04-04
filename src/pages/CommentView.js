@@ -62,12 +62,14 @@ const CommentView = ({user}) => {
       { comments?.map((comment) => (
         <div key={comment.id}>
           <Card style={{margin: '30px', padding: '20px', background:  'rgba(9,9,118,1)'}}>
-          <Link to={user?.id == comment?.userId ? `/profile/${user_id}` : `/profile-2/${user_id}/${comment?.userId}`}>
           <div style={{display: 'flex', alignItems: 'center', color: 'white'}}>
-          <p style={{marginRight: '20px'}}>@{comment?.User?.username}</p>
+          <Link to={user?.id == comment?.userId ? `/profile/${user_id}` : `/profile-2/${user_id}/${comment?.userId}`} className='link'>
+         
+          <p style={{marginRight: '20px', color: 'white'}}>@{comment?.User?.username}</p>
+          </Link>
           <p>{comment?.comRes}</p>
           </div>
-          </Link>
+          
           </Card>
           
           </div>

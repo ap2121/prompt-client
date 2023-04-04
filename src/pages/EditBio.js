@@ -44,11 +44,18 @@ const EditBio = ({user}) => {
 
     return (
     <div>
-        <form onSubmit={handleSubmit}> 
-            <TextField variant='outlined' name='bioPrompt' value={formData?.bioPrompt} onChange={handleChange} sx={{input: {color: 'white', width: '200px', height: '50px'}}}/>
-        <button>Confirm Bio Edit</button>
+        <div className='edit-hdr-cnt'>
+            <p>New Bio Prompt</p>
+        </div>
+        <div >
+        <form onSubmit={handleSubmit} className='edit-cnt'> 
+            <TextField variant='outlined' name='bioPrompt' value={formData?.bioPrompt} onChange={handleChange} sx={{input: {color: 'white', height: '100px', textAlign: 'center'}}} style={{width: '250px', color: 'white'}}/>
+        <button className='edit-btn'>Confirm Bio Edit</button>
         </form>
+        </div>
+        <div className='edit-res-cnt'>
         <h4 style={{color: 'white'}}>{currentUser?.bio}</h4>
+        </div>
     </div>
   )
 }

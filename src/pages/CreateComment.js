@@ -63,33 +63,35 @@ const handleChange = (e) => {
      let withComment = (
         <div>
             <div style={{display: 'flex', justifyContent: 'center'}}>
-            <h3>{comment.comRes}</h3>
+            <h3 className='crte-cmt-cmt'>{comment.comRes}</h3>
             </div>
-            <div style={{display: 'flex', justifyContent: 'center'}}>
-                <Link to={`/comment/${user_id}/${post_id}`}>
-                <p>Post comment</p>
-                </Link>
-                <p onClick={retryFacade}>Retry</p>
-            </div>
+            { comment?.id && <div className='cmt-btn-cnt'>
+               
+                <button onClick={() => {navigate(`/comment/${user_id}/${post_id}`)}} className='cmt-btn'>Post </button>
+                
+                <button Click={retryFacade} className='cmt-btn'>Retry</button>
+            </div>}
         </div>
      ) 
-     let noComment = (
-        <div style={{display: 'flex', justifyContent: 'center'}}>
-            <h3 style={{color: 'white'}}>.....</h3>
-        </div>
-     )
+    
+     
     return (
     <div>
-        <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>
-            <img src={currentPost.imgRes}/>
-            <p>{currentPost.capRes}</p>
-        </div>
-        <form onSubmit={handleSubmit} style={{display: 'flex', justifyContent: 'center'}}>
-            <TextField label= 'Comment Prompt' variant='outlined' name='comPrompt' value={formData.comPrompt} onChange={handleChange}/>
-        <button>Create Comment</button>
+        <div style={{display: 'flex', justifyContent: 'center'}}>
+        <form onSubmit={handleSubmit} style={{display: 'grid',  gridTemplateColumns: '200px',justifyContent: 'center'}}>
+            <TextField label= 'Comment Prompt' variant='outlined' name='comPrompt' value={formData.comPrompt} onChange={handleChange} style={{marginTop: '20px'}} sx={{input: {color: 'white', height: '50px'}}} required/>
+        <button style={{marginTop: '20px', padding: '20px', borderRadius: '35px', width: '200px', textAlign: 'center',  color: 'white',  background: 'rgb(9,9,118,1)'}}>Preview Comment</button>
         </form>
+        </div>
+        <div className='crte-cmt-img-cnt'>
+            <img src={currentPost.imgRes} className='crte-cmt-img'/>
+            </div>
+            <div className='crte-cmt-p-cnt'>
+            <p className='crte-cmt-p'>{currentPost.capRes}</p>
+            </div>
+        
         <div>
-            {comment?.id ? withComment : noComment}
+            { withComment }
         </div>
     </div> 
   )

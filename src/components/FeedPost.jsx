@@ -18,7 +18,7 @@ const FeedPost = (props) => {
         </Link>
         <img src={props.imgRes} className='feed-img'/>
         <div style={{display: 'flex', marginTop: '5px'}}>
-        <p style={{color: 'white', fontSize: '18px', marginBottom: 'auto'}}>{props.capRes}</p>
+        <p style={{color: 'white', fontSize: '18px', marginBottom: 'auto', textAlign: 'center'}}>{props.capRes}</p>
         </div>
         <div style={{display: 'flex', marginTop: 'auto', marginLeft: 'auto', marginRight: '30px', marginBottom: 'auto'}}>
         <Link to={`/comment/${props.currentId}/${props.id}`}>

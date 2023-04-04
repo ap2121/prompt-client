@@ -72,7 +72,7 @@ const Profile2 = ({user}) => {
 
      ))}
      </div>
-     <img src={currentProfile?.proPic} style={{height: '400px', width: '400px', borderRadius: '50%'}}/>
+     <img src={currentProfile?.proPic} style={{height: '400px', width: '400px',   border: '5px solid rgba(9,9,118,1)', borderRadius: '50%'}}/>
 
       <div style={{height: '300px', width: '150px' ,display: 'flex', flexDirection: 'column', border: '5px solid rgba(9,9,118,1)', borderRadius: '35px', overflow: 'scroll'}}>
       <h3 style={{textAlign: 'center', fontSize: '20px', color: 'white', marginBottom: '20px', marginTop: '10px'}}>Following</h3>
@@ -80,7 +80,7 @@ const Profile2 = ({user}) => {
         <div key={f.id}> 
         <Link to={user?.id == f?.id ? `/profile/${user_id}` : `/profile-2/${user_id}/${f?.id}`} style={{textDecoration: 'none'}}>
         <div style={{display: 'flex', alignItems: 'center', fontSize: '20px'}}>
-        <img src={f?.proPic} style={{height: '20px', width: '20px', borderRadius: '50%', margin: '5px'}}/>
+        <img src={f?.proPic} style={{height: '20px', width: '20px',  borderRadius: '50%', margin: '5px'}}/>
         <p style={{color: 'white'}}>{f?.username}</p>
         </div>
         </Link>
@@ -109,7 +109,7 @@ const Profile2 = ({user}) => {
       {userPosts?.map((p) => (
         <div key={p?.id}>
         <Card style={{height: '400px', width: '325px', display: 'flex', flexDirection: 'column',justifyContent: 'center', alignItems: 'center', background: 'rgba(9,9,118,1)', borderRadius: '35px',}}>
-        <img src={p?.imgRes} style={{height: '325px', width: '325px', marginBottom: 'auto'}}/>
+        <img src={p?.imgRes} style={{height: '325px', width: '325px', marginBottom: 'auto', border: '3px solid rgba(9,9,118,1)'}}/>
         <p style={{color: 'white', fontSize: '15px', textAlign: 'center', marginBottom: 'auto'}}>{p?.capRes}</p>
         <Link to={`/comment/${user_id}/${p?.id}`}>
         <ModeCommentOutlinedIcon style={{color: 'white', marginLeft: 'auto', marginRight: '17px', marginBottom: '10px'}}/>
