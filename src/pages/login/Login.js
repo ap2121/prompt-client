@@ -41,8 +41,8 @@ const Login = ({setUser, user}) => {
         <section className='input-cnt'>
         <form onSubmit={handleSubmit}>
         <TextField label="email" variant='outlined' className='login-inpt' onChange={handleChange} name='email' value={formValues.email
-        }/>
-        <TextField label='password' type='password' variant='outlined' className='login-inpt' onChange={handleChange} name='password' value={formValues.password} />
+        } required/>
+        <TextField label='password' type='password' variant='outlined' className='login-inpt' onChange={handleChange} name='password' value={formValues.password} required/>
         <Button variant='outline' type='submit'>Login</Button>
         </form>
         <Link to={'/register'}>
