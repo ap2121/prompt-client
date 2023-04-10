@@ -12,6 +12,7 @@ import Profile2 from './pages/Profile2'
 import PostDetail from './pages/PostDetail'
 import EditBio from './pages/EditBio'
 import EditProPic from './pages/EditProPic'
+import Explore from './pages/Explore'
 import { Route, Routes, useNavigate } from 'react-router-dom'
 import './app.css'
 import { CheckSession } from './services/Auth'
@@ -60,6 +61,7 @@ function App() {
       <Route path='/user-post/:post_id' element={<PostDetail user={user}/>}/>
       <Route path='/edit-propic/:user_id' element={<EditProPic user={user}/>} />
       <Route path='/edit-bio/:user_id' element={<EditBio user={user}/>}/>
+      <Route path='/explore' element={<Explore user={user}/>}/>
     </Routes>
       </div>
     </div>

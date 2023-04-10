@@ -10,7 +10,7 @@ const FeedPost = (props) => {
     
     <div style={{display: 'grid', justifyContent: 'center', alignItems: 'center', gridTemplateColumns: '400px', gap: '35px 35px'}}>
       <Card style={{width: '520px', height: '720px', marginBottom: '30px', boxShadow: 'rgba(0, 0, 0, 0.24) 0px 3px 8px', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems:'center',  texAlign: 'center', gridTemplateColumns: '200px', background:  'rgba(9,9,118,1)', borderRadius: '15px'}}>
-        <Link to={`/profile-2/${props.currentId}/${props.userId}`} style={{alignSelf: 'flex-start', color: 'black', textDecoration: 'none'}}>
+        <Link to={props.currentId !== props.userId ? `/profile-2/${props.currentId}/${props.userId}` : `/profile/${props.currentId}`} style={{alignSelf: 'flex-start', color: 'black', textDecoration: 'none'}}>
         <div style={{display: 'flex', margin: 'auto',  justifyContent: 'center', alignItems: 'center'}}>
         <img src={props.proPic} style={{height: '50px', width: '50px', borderRadius: '50%', marginRight: '10px', marginTop: '15px', marginLeft: '10px'}}/>
         <p style={{alignSelf: 'center', color: 'white', fontSize: '16px', marginTop: '15px'}}>@{props.username}</p>

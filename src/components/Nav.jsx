@@ -32,7 +32,7 @@ export default function Nav({user, handleLogout}) {
         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }} onClick={() => {navigate(`/profile/${user?.id}`)}} className='nav-hvr'>
           Welcome: {user?.username}
         </Typography>
-       <Typography variant='h6' component='div' sx={{flexGrow: 1}}>Explore</Typography>
+       <Typography variant='h6' component='div' sx={{flexGrow: 1}} onClick={() => {navigate(`/explore`)}} className='nav-hvr'>Explore</Typography>
         <Button color="inherit" onClick={ handleLogout}>Logout</Button>
       </Toolbar>
     </AppBar>
