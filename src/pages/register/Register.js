@@ -47,10 +47,10 @@ const Register = () => {
         <img src='https://res.cloudinary.com/dntodeqe9/image/upload/v1680039380/xkcwmkddi1aez6i58tss.png' alt='an ai drawn picture of a big robot' className='login-img'/>
         <section className='input-cnt'>
         <form onSubmit={handleSubmit}>
-        <TextField label="Email" variant='outlined' className='login-inpt' onChange={handleChange} name='email' value={formValues.email}/>
-        <TextField label="Username" className='login-input' onChange={handleChange} name='username' value={formValues.username}/>
-        <TextField label='Password'  type='password' variant='outlined' className='login-inpt' onChange={handleChange} name='password' value={formValues.password}/>
-        <TextField label='Confirm Password' type='password' variant='outlined' className='login-input' onChange={handleChange} name='confirmPassword' value={formValues.confirmPassword}/>
+        <TextField label="Email" variant='outlined' className='login-inpt' onChange={handleChange} name='email' value={formValues.email} required/>
+        <TextField label="Username" className='login-input' onChange={handleChange} name='username' value={formValues.username} required/>
+        <TextField label='Password'  type='password' variant='outlined' className='login-inpt' onChange={handleChange} name='password' value={formValues.password} required/>
+        <TextField label='Confirm Password' type='password' variant='outlined' className='login-input' onChange={handleChange} name='confirmPassword' value={formValues.confirmPassword} required/>
         <Button variant='outline' onClick={handleSubmit}>Register</Button>
         </form>
         <Link to={'/login'}>

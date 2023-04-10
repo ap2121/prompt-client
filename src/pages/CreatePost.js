@@ -2,7 +2,7 @@ import React from 'react'
 import {useState} from 'react'
 import { useNavigate, useParams, Link } from 'react-router-dom'
 import { TextField, Typography } from '@mui/material'
-import Loader from '../components/Loader'
+
 import Client from '../services/Api'
 const CreatePost = ({user}) => {
 
