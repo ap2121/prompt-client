@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Client from '../services/Api'
 import FeedPost from '../components/FeedPost'
-import { Feed } from 'semantic-ui-react'
+
 const Explore = ({user}) => {
   const [allPosts, setAllPosts] = useState([])
 
@@ -31,7 +31,7 @@ const Explore = ({user}) => {
   ))
   
     return (
-    <div>
+    <div style={{marginTop: '20px'}}>
         {postView}
     </div>
   )
